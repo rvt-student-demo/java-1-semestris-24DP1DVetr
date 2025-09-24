@@ -17,14 +17,18 @@ public class discountBolts {
         int washer = Integer.valueOf(input.nextLine());
         final int washerPrice = 1;
 
-        
+        boolean hasNutIssue = false;
+        boolean hasWasherIssue = false;
         System.out.println();
         if(screw>nut){
             System.out.println("Parbaudi pasūtījumu: par maz uzgriežņu");
+            hasNutIssue = true;
         } 
         if(screw*2>washer){
             System.out.println("Parbaudi pasūtījumu: par maz paplāksņu");
-        } else{
+            hasWasherIssue = true;
+        } 
+        if(!hasNutIssue && !hasWasherIssue){
             System.out.println("Pasūtījums ir kārtībā.");
         }
 
