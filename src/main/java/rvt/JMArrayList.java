@@ -86,6 +86,9 @@ public class JMArrayList {
     }
 
     public static void removeLast(ArrayList<String> strings){
-        strings.remove(strings.size()-1);
+        if(!strings.isEmpty()){
+            strings.remove(strings.size()-1);
+        }
+        
     }
 }
