@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Chapter44 {
     public static void main(String[] args) {
-        ex4();
+        ex5();
     }
 
     public static void ex1() {
@@ -37,46 +37,34 @@ public class Chapter44 {
         scanner.close();
     }
 
-    // public static void ex3() {
-    //     Scanner scanner = new Scanner(System.in);
-    //     ArrayList<String> femaleList = new ArrayList<>(List.of("Amy", "Buffy", "Cathy"));
-    //     ArrayList<String> maleList = new ArrayList<>(List.of("Elroy", "Fred", "Graham"));
-    //     ArrayList<String> userList = new ArrayList<>();
+    public static void ex3() {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> femaleList = new ArrayList<>(List.of("Amy", "Buffy", "Cathy"));
+        ArrayList<String> maleList = new ArrayList<>(List.of("Elroy", "Fred", "Graham"));
 
-    //     System.out.println("Enter a name:");
-    //     while (true) {
-    //         String input = scanner.nextLine();
-    //         if (input.isEmpty()) {
-    //             break;
-    //         }
-    //         userList.add(input);
+        while (true) {
+            System.out.println("Enter a name:");
+            String input = scanner.nextLine();
+            if (input.isEmpty()) {
+                break;
+            } 
+            String title = "";
+            for (int i = 0; i < femaleList.size(); i++){
+                if (input.startsWith(femaleList.get(i))){
+                    title = "Mrs. ";
+                } else if(input.startsWith(maleList.get(i))){
+                    title = "Mr. ";
+                }
+            }
 
-    //         String title = "";
-
-    //         for (String f : femaleList) {
-    //             if (input.startsWith(f)) {
-    //                 title = "Ms. ";
-    //                 break;
-    //             }
-    //         }
-
-    //         if (title.equals("")) {
-    //             for (String m : maleList) {
-    //                 if (input.startsWith(m)) {
-    //                     title = "Mr. ";
-    //                     break;
-    //                 }
-    //             }
-    //         }
-            
-    //         System.out.println(title + input);
-    //         System.out.println();
-    //     }
-    // }
+            System.out.println(title + input);
+            System.out.println();
+        }
+        scanner.close();
+    }
 
     public static void ex4(){
         Scanner scanner = new Scanner(System.in);
-        
         System.out.print("Enter cook time-> ");
         int time = Integer.valueOf(scanner.nextLine());
 
@@ -87,9 +75,65 @@ public class Chapter44 {
         } else {
             System.out.println("Error");
         }
-        
+        scanner.close();
     }
+
     public static void ex5(){
-        
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            if (line.trim().startsWith("//")) {
+                System.out.println(line);
+            }
+        }
+        scanner.close();
+    }
+
+    public static void ex6(){
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Enter your password:");
+            String password = scanner.nextLine();
+            if (password.length() < 7){
+                System.out.println("That password is not acceptable.\n");
+                continue;
+            }
+            boolean noLower = password.equals(password.toUpperCase());
+            boolean noUpper = password.equals(password.toLowerCase());
+            if (noUpper || noLower) {
+                System.out.println("That password is not acceptable.\n");
+                continue;
+            }
+            boolean hasDigit = false;
+            for (int i = 0; i < password.length(); i++){
+                if (Character.isDigit(password.charAt(i))){
+                    hasDigit = true;
+                    break;
+                }
+            }
+            if (!hasDigit){
+                System.out.println("That password is not acceptable.\n");
+                continue;
+            }
+            System.out.println("Acceptable password.");
+            break;
+        }
+        scanner.close();
+    }
+    public static void ex7(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a word -->");
+        String word = scanner.nextLine();
+        String spaces = " ";
+        System.out.println(word);
+
+        while (word.length()>2){
+            word = word.substring(1, word.length()-1);
+            System.out.println(spaces + word);
+            spaces += " ";
+        }
+        scanner.close();
     }
 }
